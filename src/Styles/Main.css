@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow: auto;
+}
+
+#sectionOne {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+
+    padding-left: 2%;
+    padding-right: 2%;
+
+    border: none;
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.sectionTwo {
+    float: left;
+    width: 50%;
+    
+    font-size: 30px;
+    position: relative;
+}
+
+.sectionThree {
+    float: left;
+    width: 40%;
+    margin-left: 2%;
+    position: relative;
+    
+    font-size: 30px;
+}
+
+.donateNow{
+    position: absolute;
+
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+
+    width: 80%;
+    height: 40px;
+    font-size: 20px;
+
+    cursor: pointer;
+    
+}
+
+h1 {
+    font-size: 37px;
+    text-align: center;
+    padding-top: 3%;
+    
+}
+
+img {
+    width: 100%; 
+    height: auto;
+    
+}
+
+p {
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    float: left;
+    
+}
+
+span {
+    font-size: 50px;
+    
+}
+
+@media only screen and (max-width: 767px) {
+    #sectionOne {
+        margin-top: 5%;
+        margin-left: 2%;
+        margin-right: 2%;
+    
+        padding-left: 2%;
+        padding-right: 2%;
+    
+        border: none;
+        border-radius: 25px;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        
+    }
+
+    .donateNow{
+        position: relative;
+    
+        top: 15%;
+        left: 50%;
+    
+        width: 80%;
+        height: 40px;
+        font-size: 20px;
+        
+    }
+
+    .sectionTwo {
+        float: center;
+        width: 100%;
+        
+    }
+    
+    .sectionThree {
+        float: center;
+        width: 90%;
+        margin-left: 2%;
+        position: relative;
+        
+    }
+
+    h1 {
+        font-size: 30px;
+        padding-top: 3%;
+        text-align: center;
+        margin-bottom: 0px;
+        
+    }
+
+    p {
+        font-size: 20px;
+        text-align: center;
+        width: 100%;
+        height: auto;
+        float: left;
+        
+    }
+
+    img {
+        display: none;
+    }
+
+}

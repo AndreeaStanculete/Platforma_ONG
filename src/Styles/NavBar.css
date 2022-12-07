@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+:root{
+    --backgroundColor: #66b2b2;
+    --hoverText: #cccccc;
+    --textColor: black;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 70px;
+    width: 100%;
+    background-color: rgb(230, 230, 230, 0.8);
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+}
+  
+li {
+    float: left;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    
+}
+
+.li{
+    float: right;
+    
+}
+
+li a {
+    display: block;
+    font-size: 27px;
+    color: var(--textColor);
+    text-align: center;
+    padding: 10px;
+    margin-top: 5%;
+    border-radius: 25px;
+    text-decoration: none;
+    text-align: right;
+    cursor: pointer;
+    
+}
+
+li a:hover {
+    background-color: var(--hoverText);
+    font-size: 28px;
+    
+}

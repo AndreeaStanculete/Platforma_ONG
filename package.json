@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@googlemaps/react-wrapper": "^1.1.35",
+    "express": "^4.18.2",
+    "geocode": "^0.0.3",
+    "google-map-react": "^2.2.0",
+    "mongoose": "^6.7.5",
+    "react": "^18.2.0",
+    "react-geocode": "^0.2.3"
+  },
+  "engines": {
+    "node": "16.18.0"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "(cd my-app) && (npm run build)"
+  }
+}

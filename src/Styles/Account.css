@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.card {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+
+    border: none;
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.img2 {
+    border-radius: 50%;
+    width: 50%;
+
+    margin-top: 10%;
+    
+}
+
+#content2 {
+    text-align: center;
+    padding: 2px;
+    float: left;
+    width: 50%;
+    position: relative;
+    
+}
+
+#content3 {
+    text-align: center;
+    padding: 2px;
+    float: right;
+    width: 45%;
+    
+}
+
+#paragraph {
+    font-size: 25px;
+    float: center;
+    width: 100%;
+    
+}

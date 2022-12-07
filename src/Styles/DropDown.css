@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 27px;
+    padding: 10px;
+    margin-top: 5%;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #cccccc;
+    font-size: 28px;
+    
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    
+
+  }
+  
+  .dropdown-content {
+    padding: 10px 10px;
+    position: fixed;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-top: 6px;
+    
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 10px 10px;
+    text-decoration: none;
+    text-align: left;
+    font-size: 20px;
+    display: block;
+    
+  }
+
+  .dropdown-content a:hover {
+    font-size: 21px;
+    
+  }
+  
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block; }
