@@ -1,9 +1,9 @@
 
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import {  Link } from "react-router-dom";
 
-import AuthError from "./AuthError";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import "../Styles/Login.css";
@@ -33,6 +33,51 @@ const onFailure = (err) => {
 };
 
 function LoginBox({ setToken }){
+
+    const [isLoggedin, setisLoggedin] = useState(false);
+
+    useEffect(() => {
+        fetch(`/api/is`)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            if(result.is.is === true){
+                setisLoggedin(true);
+            }
+            else setisLoggedin(false);
+          },
+          // Note: it's important to handle errors here
+          // instead of a catch() block so that we don't swallow
+          // exceptions from actual bugs in components.
+          (error) => {
+            setisLoggedin(false);
+          }
+        )
+    }, [])
+
+    const navigate = useNavigate();
+
+    const changeData = async e => {
+        let keywd1 = email;
+
+        try {
+            const response = await fetch(`/api/changeL?Email=${keywd1}`, {
+                method: 'GET'
+            });
+        
+            if (!response.ok) {
+                throw new Error(`Error! status: ${response.status}`);
+            }
+        
+            const result = await response.json();
+            e.preventDefault();
+            navigate( '/', {})
+  
+        } catch (err) {
+          console.log(err);
+        } 
+      };
+
     const clientId = '386932037035-k8v833noqjk************.apps.googleusercontent.com';
 
     useEffect(() => {
@@ -63,21 +108,45 @@ function LoginBox({ setToken }){
     const [email, setUserName] = useState();
     const [password, setPassword] = useState();
 
-    const navigate = useNavigate();
 
-    const handleSubmit = async e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const info={email:email,password:password}; 
-	    <NavBar data={info} />;
-        navigate("/");
-      }
 
+        let users = [];
+        let keywd1 = email;
+        let keywd2 = password;
+
+        if(email != "" && password != "")
+        {
+
+            try {
+                const response = await fetch(`/api/conectare?Email=${keywd1}&Pass=${keywd2}`, {
+                    method: 'GET'
+                });
+            
+                if (!response.ok) {
+                    throw new Error(`Error! status: ${response.status}`);
+                }
+            
+                const result = await response.json();
+                if(result.data.length != 0){
+                    changeData(e);
+                }
+
+                e.preventDefault();
+                return false;
+            
+            } catch (err) {
+              console.log(err);
+            }  
+        } else return false;
+    }
 
     return ( 
         <div style={{ backgroundImage: "url(./background2.jpg)", backgroundRepeat: 'no-repeat', 
         backgroundSize: 'cover', backgroundPosition: 'center', position: 'fixed', width: '100vw', height: '100vh'}}>
 
-                <NavBar data={"-"}/>
+                <NavBar data={isLoggedin}/>
 
                 <div id="box">
                     <h2>Login</h2>

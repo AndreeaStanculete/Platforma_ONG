@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import React from 'react';
+import { useEffect } from "react";
 import { Link, createSearchParams } from 'react-router-dom';
 import { useSearchParams, useLocation } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
@@ -364,6 +365,27 @@ const needs = [
 
 function Donate() {
 
+    const [isLoggedin, setisLoggedin] = useState(false);
+
+    useEffect(() => {
+        fetch(`/api/is`)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            if(result.is.is === true){
+                setisLoggedin(true);
+            }
+            else setisLoggedin(false);
+          },
+          // Note: it's important to handle errors here
+          // instead of a catch() block so that we don't swallow
+          // exceptions from actual bugs in components.
+          (error) => {
+            setisLoggedin(false);
+          }
+        )
+    }, [])
+
     const location = useLocation();
     // console.log(location.state.Orase);
 
@@ -393,7 +415,6 @@ function Donate() {
          }
      }
      getOrase();
-     console.log(Optiuni);
 
     const navigate = useNavigate();
     const [OrasOption, setOrasOption] = useState("");
@@ -447,7 +468,6 @@ function Donate() {
                         lat: lat,
                         lng: lng,
                       }
-                      console.log(lat);
                     },
                     (error) => {
                       console.error(error);
@@ -469,7 +489,7 @@ function Donate() {
         backgroundSize: 'cover', backgroundPosition: 'center', position: 'fixed', width: '100vw', height: '100vh'}}>
 
 
-                <NavBar data={"Andreea"}/>
+                <NavBar data={isLoggedin}/>
 
                 <div id="sectionOne">
                     <h1> Caută ONG-uri în apropiere de tine </h1>

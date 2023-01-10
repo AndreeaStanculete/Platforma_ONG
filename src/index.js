@@ -15,16 +15,15 @@ import Settings2 from './Pages/settings'
 import Account from "./Pages/account";
 import MyNGOs from "./Pages/myNGOs";
 import Map from './Utilities/Map';
+import Revendica from './Utilities/Revendica';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-let email = '';
 
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App data={email} />} />
-      <Route path="/login" element={<Login data={email}/>} />
+      <Route path="/" element={<App />} />
+      <Route path="/login" element={<Login/>} />
       <Route path="/register" element={<Register />} />
       <Route path="/error" element={<Error />} />
       <Route path="/donate" element={<Donate />} />
@@ -33,6 +32,7 @@ root.render(
       <Route path="/settings" element={<Settings2 />} />
       <Route path="/myNGOs" element={<MyNGOs />} />
       <Route path="/account" element={<Account />} />
+      <Route path="/Revendica" element={<Revendica />} />
       <Route path="/Map" element={<Map />} />
       <Route path='*' to='/error' element={<Error />} />
     </Routes>

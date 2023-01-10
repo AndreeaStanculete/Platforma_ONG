@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const ONGs = require('./schemas/ongs.js');
+const loginF = require('./schemas/loggedin.js');
+const Users = require('./schemas/users.js');
+const Subscriptions = require('./schemas/subscriptions.js');
 
 const connection = mongoose.connection;
 
@@ -16,6 +19,9 @@ function asyncDBConnect(url, dbName, callback) {
 
 module.exports = {
     ONGs,
+    loginF,
+    Users,
+    Subscriptions,
     connection,
     asyncDBConnect
 }

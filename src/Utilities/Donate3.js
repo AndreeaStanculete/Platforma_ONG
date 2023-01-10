@@ -11,6 +11,27 @@ import { useEffect } from "react";
 
 function Donate3() {
 
+    const [isLoggedin, setisLoggedin] = useState(false);
+
+    useEffect(() => {
+        fetch(`/api/is`)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            if(result.is.is === true){
+                setisLoggedin(true);
+            }
+            else setisLoggedin(false);
+          },
+          // Note: it's important to handle errors here
+          // instead of a catch() block so that we don't swallow
+          // exceptions from actual bugs in components.
+          (error) => {
+            setisLoggedin(false);
+          }
+        )
+    }, [])
+
     // const location = useLocation();
     // console.log(location.state.ongs);
 
@@ -32,7 +53,7 @@ function Donate3() {
 
             <div style={{position: 'fixed', width: '100vw', height: '100vh', backgroundColor: 'rgb(217, 217, 217, 0.5)'}}>
 
-                <NavBar data={"Andreea"}/>
+                <NavBar data={isLoggedin}/>
                     <div id="sectionOne">
                         <h1>Lista cu ONG-uri</h1>
                         <div style={{width: '80%', height: '420px', marginBottom: '10px'}}>

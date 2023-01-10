@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 import { useState } from 'react';
+import { useEffect } from "react";
 
 import NavBar from "./NavBar";
 import Footer from "./Footer";
@@ -12,6 +13,26 @@ import {FaEyeSlash, FaEye} from "react-icons/fa";
 
 function RegisterBox(){
 
+    const [isLoggedin, setisLoggedin] = useState(false);
+
+    useEffect(() => {
+        fetch(`/api/is`)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            if(result.is.is === true){
+                setisLoggedin(true);
+            }
+            else setisLoggedin(false);
+          },
+          // Note: it's important to handle errors here
+          // instead of a catch() block so that we don't swallow
+          // exceptions from actual bugs in components.
+          (error) => {
+            setisLoggedin(false);
+          }
+        )
+    }, [])
     const [hidePassword, setHidePassword] = useState(false);
 
     const togglePassword = () => {
@@ -44,7 +65,7 @@ function RegisterBox(){
         <div style={{ backgroundImage: "url(./background.jpg)", backgroundRepeat: 'no-repeat', 
         backgroundSize: 'cover', backgroundPosition: 'center', position: 'fixed', width: '100vw', height: '100vh'}}>
 
-                <NavBar data={"-"}/>
+                <NavBar data={isLoggedin}/>
 
                 <div id="box">
                     <h2>Register</h2>

@@ -60,6 +60,22 @@ body {
     
 }
 
+.donateNow2{
+    position: absolute;
+
+    top: 26%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+
+    width: 80%;
+    height: 40px;
+    font-size: 20px;
+
+    cursor: pointer;
+    
+}
+
 h1 {
     font-size: 37px;
     text-align: center;
@@ -86,6 +102,13 @@ span {
     font-size: 50px;
     
 }
+
+hr.rounded {
+    border-top: 3px solid rgb(171, 99, 131);
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
 
 @media only screen and (max-width: 767px) {
     #sectionOne {

@@ -2,6 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import {  Link } from "react-router-dom";
 import Popup from 'reactjs-popup';
+import { useEffect, useState } from "react";
 import 'reactjs-popup/dist/index.css';
 
 import NavBar from "./NavBar";
@@ -11,11 +12,38 @@ import "../Styles/Settings.css";
 
 function Settings2(){
 
+    const [isLoggedin, setisLoggedin] = useState(false);
+    const [user, setUser] = useState();
+
+    let [lista, setLista] = useState([]);
+
+    const getUser = async e => {
+        return user.email;
+    }
+
+    useEffect(() => {
+        fetch(`/api/denumiri`)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            if(result.is[0].is === true){
+                setisLoggedin(true);
+                setUser(result.who[0]);
+                setLista(result.denumiri);
+            } else setisLoggedin(false);
+          },
+          
+          (error) => {
+            setisLoggedin(false);
+          }
+        )
+    }, [])
+
     return ( 
         <div style={{ backgroundImage: "url(./background2.jpg)", backgroundRepeat: 'no-repeat', 
         backgroundSize: 'cover', backgroundPosition: 'center', position: 'fixed', width: '100vw', height: '100vh'}}>
 
-                <NavBar data={"-"}/>
+                <NavBar data={isLoggedin}/>
 
                 <div className="card">
                     <div id="content2">
@@ -41,9 +69,25 @@ function Settings2(){
                     </div>
 
                     <div id="content3">
-                        <div id="paragraph" style={{fontSize: '30px', paddingTop: '5%'}}>Șterge abonamente: </div>
-                        <div id="paragraph" style={{fontSize: '20px', fontStyle: 'italic'}}>Momenta nu aveți locații de sters.</div>
-                    </div>
+                            <div id="paragraph" style={{fontSize: '30px', paddingTop: '5%'}}>Abonamente: </div>
+                            
+                            {(lista.length > 0) ? (
+                            <div>
+                                <div id="lista" style={{width: '80%', margin: 'auto', marginBottom: '15px', textAlign: 'left'}}>
+                                    <div style={{backgroundColor: 'white', width: '100%', height: '500px', overflow: 'auto',
+                                    textAlign: 'justify', padding: '10px'}}>
+                                        <ol>
+                                        {lista.map(data => (
+                                            <p style={{fontSize: '20px'}}>
+                                                <li> {data}
+                                                </li>
+                                            </p>
+                                        ))}
+                                    </ol></div>
+                                </div>
+                            </div>
+                            ) : <div id="paragraph" style={{fontSize: '20px', fontStyle: 'italic'}}>Momentan nu aveți locații adăugate.</div>}  
+                        </div>
 
 
                     {/* <Popup trigger={<button> Trigger</button>} position="right center">
